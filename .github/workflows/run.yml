@@ -117,6 +117,7 @@ jobs:
           cat temp-proxy.txt | sort --ignore-case -u > proxy-list-with-redundant
           cat temp-direct.txt | sort --ignore-case -u > direct-list-with-redundant
           # cat temp-reject.txt | sort --ignore-case -u > reject-list-with-redundant
+          cat temp-reject.txt > reject-list-without-redundant
           
       - name: Remove redundant domains
         run: |
@@ -138,7 +139,7 @@ jobs:
         run: |
           diff ./direct-need-to-remove.txt ./direct-list-without-redundant | awk '/^>/{print $2}' > temp-cn.txt
           diff ./proxy-need-to-remove.txt ./proxy-list-without-redundant | awk '/^>/{print $2}' > temp-geolocation-\!cn.txt
-          diff ./reject-need-to-remove.txt ./temp-reject.txt | awk '/^>/{print $2}' > temp-category-ads-all.txt
+          diff ./reject-need-to-remove.txt ./reject-list-without-redundant | awk '/^>/{print $2}' > temp-category-ads-all.txt
           
       - name: Remove domains end with ".cn" in "temp-geolocation-!cn.txt" and write lists to data directory
         run: |
