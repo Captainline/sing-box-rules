@@ -1,6 +1,5 @@
 #!/bin/bash
 
-mkdir -p rule_set_ip
 ./mosdns v2dat unpack-ip -o ./rule_set_ip/ geoip.dat
 list=($(ls ./rule_set_ip | sed 's/geoip_//g' | sed 's/\.txt//g'))
 for ((i = 0; i < ${#list[@]}; i++)); do
@@ -15,7 +14,6 @@ for ((i = 0; i < ${#list[@]}; i++)); do
 done
 
 list=($(./sing-box geosite list | sed 's/ (.*)$//g'))
-mkdir -p rule_set_site
 for ((i = 0; i < ${#list[@]}; i++)); do
 	./sing-box geosite export ${list[i]} -o ./rule_set_site/${list[i]}.json
 	./sing-box rule-set compile ./rule_set_site/${list[i]}.json -o ./rule_set_site/${list[i]}.srs
