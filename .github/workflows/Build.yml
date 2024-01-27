@@ -36,24 +36,24 @@ jobs:
         shell: bash
 
       - name: Checkout the "src" branch of this repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.1.1
         with:
           ref: src
 
       - name: Checkout Loyalsoldier/domain-list-custom
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.1.1
         with:
           repository: Loyalsoldier/domain-list-custom
           path: custom
 
       - name: Checkout v2fly/domain-list-community
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.1.1
         with:
           repository: v2fly/domain-list-community
           path: community
 
       - name: Checkout cokebar/gfwlist2dnsmasq
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.1.1
         with:
           repository: cokebar/gfwlist2dnsmasq
           path: gfwlist2dnsmasq
@@ -67,6 +67,7 @@ jobs:
         uses: actions/setup-go@v4.1.0
         with:
           go-version: ${{steps.go_latest.outputs.go_latest}}
+          cache-dependency-path: ./custom/go.sum
 
       - name: Get geoip.dat relative files
         run: |
@@ -187,7 +188,7 @@ jobs:
           sha256sum publish/geosite.dat > publish/geosite.dat.sha256sum
           
       - name: Checkout Yuu518/sing-geosite
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.1.1
         with:
           repository: Yuu518/sing-geosite
           path: sing-geosite
@@ -202,7 +203,7 @@ jobs:
           sha256sum geosite.db > geosite.db.sha256sum
           
       - name: Checkout SagerNet/sing-geoip
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.1.1
         with:
           repository: SagerNet/sing-geoip
           path: sing-geoip
