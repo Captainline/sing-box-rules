@@ -217,7 +217,7 @@ jobs:
           NO_SKIP: true
         run: |
           mkdir -p ./rule_set
-          cp ./geoip.dat ./sing-geosite/geosite.db ./convert/convert.sh ./rule_set
+          cp ./geoip.dat ./sing-geosite/geosite.db ./convert.sh ./rule_set
           cd ./rule_set && mkdir -p rule_set_site && mkdir -p rule_set_ip
           wget https://github.com/SagerNet/sing-box/releases/download/v1.8.0/sing-box-1.8.0-linux-amd64.tar.gz -O sing-box.tar.gz && tar zxvf sing-box.tar.gz && mv sing-box-1.8.0-linux-amd64/sing-box ./ && rm -r sing-box-1.8.0-linux-amd64
           wget https://github.com/IrineSistiana/mosdns/releases/download/v4.5.3/mosdns-linux-amd64.zip -O mosdns.zip && unzip mosdns.zip
@@ -255,7 +255,7 @@ jobs:
           git remote add origin "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
           git branch -M release
           git add .
-          git commit -m "Released on ${{ env.RELEASE_NAME }}"
+          git commit -m "Released on ${RELEASE_NAME}"
           git push -f -u origin release
 
       - name: Git push assets to "rule_set" branch
@@ -267,6 +267,6 @@ jobs:
             git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git checkout -b rule_set
             git add .
-            git commit -m "Released on ${{ env.RELEASE_NAME }}"
+            git commit -m "Released on ${RELEASE_NAME}"
             git remote add origin "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
             git push -f -u origin rule_set        
