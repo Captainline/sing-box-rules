@@ -180,7 +180,6 @@ jobs:
           curl -sSL $WIN_EXTRA | grep "0.0.0.0" | awk '{print $2}' > win-extra.txt
 
           echo stripe.com >> ./community/data/openai && echo segment.io >> ./community/data/openai
-          echo mahjongsoul.com >> ./community/data/geolocation-!cn
           
       - name: Build geosite.dat file
         run: |
@@ -195,8 +194,6 @@ jobs:
           path: sing-geosite
 
       - name: Build geosite.db
-        env:
-          NO_SKIP: true
         run: |
           cd sing-geosite || exit 1
           cp ../custom/publish/geosite.dat ./
@@ -210,8 +207,6 @@ jobs:
           path: sing-geoip
 
       - name: Build geoip.db
-        env:
-          NO_SKIP: true
         run: |
           cd sing-geoip || exit 1
           sed -i 's/Dreamacro\/maxmind-geoip/MetaCubeX\/meta-rules-dat/g' main.go
@@ -220,8 +215,6 @@ jobs:
           sha256sum geoip.db > geoip.db.sha256sum
 
       - name: Convert geo to sing-rule-set
-        env:
-          NO_SKIP: true
         run: |
           mkdir -p ./rule_set
           cp ./geoip.dat ./sing-geosite/geosite.db ./convert.sh ./rule_set
