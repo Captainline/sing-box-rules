@@ -35,10 +35,10 @@ jobs:
           echo "WIN_EXTRA=https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/extra.txt" >> $GITHUB_ENV
         shell: bash
 
-      - name: Checkout the branch of this repo
+      - name: Checkout the "src" branch of this repo
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          ref: src
 
       - name: Checkout Loyalsoldier/domain-list-custom
         uses: actions/checkout@v4
@@ -102,7 +102,7 @@ jobs:
           curl -sSL ${CUSTOM_DIRECT} | perl -ne '/^((full|regexp|keyword):[^:]+)(\n$|:@.+)/ && print "$1\n"' | sort --ignore-case -u > direct-reserve.txt
           curl -sSL ${CUSTOM_PROXY} | grep -Ev ":@cn" | perl -ne '/^((full|regexp|keyword):[^:]+)(\n$|:@.+)/ && print "$1\n"' | sort --ignore-case -u > proxy-reserve.txt
           
-      - name: Add proxy, direct and reject domains from "hidden" branch to appropriate temp files
+      - name: Add proxy, direct and reject domains from "src" branch to appropriate temp files
         run: |
           cat proxy.txt >> temp-proxy.txt
           cat direct.txt >> temp-direct.txt
