@@ -64,7 +64,7 @@ jobs:
           echo go_latest=$(curl -s https://raw.githubusercontent.com/actions/go-versions/update-versions-manifest-file/versions-manifest.json | grep -oE '"version": "[0-9]{1}.[0-9]{1,}(.[0-9]{1,})?"' | head -1 | cut -d':' -f2 | sed 's/ //g; s/"//g') >> $GITHUB_OUTPUT
 
       - name: setup go
-        uses: actions/setup-go@v4.1.0
+        uses: actions/setup-go@v5.0.0
         with:
           go-version: ${{steps.go_latest.outputs.go_latest}}
           cache-dependency-path: ./custom/go.sum
@@ -180,6 +180,7 @@ jobs:
           curl -sSL $WIN_EXTRA | grep "0.0.0.0" | awk '{print $2}' > win-extra.txt
 
           echo stripe.com >> ./community/data/openai && echo segment.io >> ./community/data/openai
+          echo mahjongsoul.com >> ./community/data/geolocation-!cn
           
       - name: Build geosite.dat file
         run: |
