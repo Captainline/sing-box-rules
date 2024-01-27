@@ -58,11 +58,15 @@ jobs:
           repository: cokebar/gfwlist2dnsmasq
           path: gfwlist2dnsmasq
 
-      - name: Setup Go
-        uses: actions/setup-go@v5
+      - name: get latest go version
+        id: go_latest
+        run: |
+          echo go_latest=$(curl -s https://raw.githubusercontent.com/actions/go-versions/update-versions-manifest-file/versions-manifest.json | grep -oE '"version": "[0-9]{1}.[0-9]{1,}(.[0-9]{1,})?"' | head -1 | cut -d':' -f2 | sed 's/ //g; s/"//g') >> $GITHUB_OUTPUT
+
+      - name: setup go
+        uses: actions/setup-go@v4.1.0
         with:
-          go-version-file: ./custom/go.mod
-          cache-dependency-path: ./custom/go.sum
+          go-version: ${{steps.go_latest.outputs.go_latest}}
 
       - name: Get geoip.dat relative files
         run: |
