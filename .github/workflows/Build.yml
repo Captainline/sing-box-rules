@@ -182,10 +182,10 @@ jobs:
           go run ./ --datapath=../community/data
           sha256sum publish/geosite.dat > publish/geosite.dat.sha256sum
           
-      - name: Checkout CHIZI-0618/sing-geosite
+      - name: Checkout Yuu518/sing-geosite
         uses: actions/checkout@v4
         with:
-          repository: CHIZI-0618/sing-geosite
+          repository: Yuu518/sing-geosite
           path: sing-geosite
 
       - name: Build geosite.db
@@ -208,7 +208,7 @@ jobs:
           NO_SKIP: true
         run: |
           cd sing-geoip || exit 1
-          sed -i 's/Dreamacro\/maxmind-geoip/Loyalsoldier\/geoip/g' main.go
+          sed -i 's/Dreamacro\/maxmind-geoip/MetaCubeX\/meta-rules-dat/g' main.go
           go run -v .
           sha256sum geoip.db > geoip.db.sha256sum
 
