@@ -35,10 +35,10 @@ jobs:
           echo "WIN_EXTRA=https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/extra.txt" >> $GITHUB_ENV
         shell: bash
 
-      - name: Checkout the "src" branch of this repo
+      - name: Checkout the branch of this repo
         uses: actions/checkout@v4
         with:
-          ref: src
+          fetch-depth: 0
 
       - name: Checkout Loyalsoldier/domain-list-custom
         uses: actions/checkout@v4
@@ -217,7 +217,7 @@ jobs:
           NO_SKIP: true
         run: |
           mkdir -p ./rule_set
-          cp ./geoip.dat ./sing-geosite/geosite.db ./convert/convert.sh ./rule_set
+          cp ./geoip.dat ./sing-geosite/geosite.db ./.github/convert.sh ./rule_set
           cd ./rule_set && mkdir -p rule_set_site && mkdir -p rule_set_ip
           wget https://github.com/SagerNet/sing-box/releases/download/v1.8.0/sing-box-1.8.0-linux-amd64.tar.gz -O sing-box.tar.gz && tar zxvf sing-box.tar.gz && mv sing-box-1.8.0-linux-amd64/sing-box ./ && rm -r sing-box-1.8.0-linux-amd64
           wget https://github.com/IrineSistiana/mosdns/releases/download/v4.5.3/mosdns-linux-amd64.zip -O mosdns.zip && unzip mosdns.zip
