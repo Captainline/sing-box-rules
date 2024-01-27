@@ -200,7 +200,7 @@ jobs:
         run: |
           cd sing-geosite || exit 1
           cp ../custom/publish/geosite.dat ./
-          go run -v . geosite.dat geosite.db
+          go run -v . geosite.dat geosite.db singbox_rule_set
           sha256sum geosite.db > geosite.db.sha256sum
           
       - name: Checkout SagerNet/sing-geoip
