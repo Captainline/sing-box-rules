@@ -194,7 +194,7 @@ jobs:
         run: |
           cd sing-geosite || exit 1
           cp ../custom/publish/geosite.dat ./
-          go run -v . geosite.dat geosite.db singbox_rule_set
+          go run -v . geosite.dat geosite.db
           sha256sum geosite.db > geosite.db.sha256sum
           
       - name: Checkout SagerNet/sing-geoip
@@ -209,6 +209,7 @@ jobs:
         run: |
           cd sing-geoip || exit 1
           sed -i 's/Dreamacro\/maxmind-geoip/MetaCubeX\/meta-rules-dat/g' main.go
+          sed -i 's/Country\.mmdb/country\.mmdb/g' main.go
           go run -v .
           sha256sum geoip.db > geoip.db.sha256sum
 
