@@ -87,6 +87,7 @@ jobs:
           curl -L $APPLE_DOMAINS_URL | perl -ne '/^server=\/([^\/]+)\// && print "$1\n"' >> temp-proxy.txt
           curl -L $CUSTOM_PROXY | grep -Ev ":@cn" | perl -ne '/^(domain):([^:]+)(\n$|:@.+)/ && print "$2\n"' >> temp-proxy.txt
           curl -L $CUSTOM_GFWLIST | perl -ne '/^((?=^.{3,255})[a-zA-Z0-9][-_a-zA-Z0-9]{0,62}(\.[a-zA-Z0-9][-_a-zA-Z0-9]{0,62})+)/ && print "$1\n"' >> temp-proxy.txt
+          cat ./community/data/gfw | sort --ignore-case -u >> temp-proxy.txt
           
       - name: Get and add reject domains into temp-reject.txt file
         run: |
