@@ -211,11 +211,14 @@ jobs:
           cd ./rule_set && mkdir -p rule_set_site && mkdir -p rule_set_ip
           wget https://github.com/SagerNet/sing-box/releases/download/v1.8.0/sing-box-1.8.0-linux-amd64.tar.gz -O sing-box.tar.gz && tar zxvf sing-box.tar.gz && mv sing-box-1.8.0-linux-amd64/sing-box ./ && rm -r sing-box-1.8.0-linux-amd64
           wget https://github.com/IrineSistiana/mosdns/releases/download/v4.5.3/mosdns-linux-amd64.zip -O mosdns.zip && unzip mosdns.zip
-          curl -sSL $AWAVENUE_ADS_RULES_JSON_URL | perl -ne 'print unless/^\s*(\/\/.*|)$/' >> awavenue-ads.json
-          curl -sSL $AWAVENUE_ADS_RULES_SRS_URL | perl -ne 'print unless/^\s*(\/\/.*|)$/' >> awavenue-ads.srs
-          mv awavenue-ads.json ./rule_set_site && mv awavenue-ads.srs ./rule_set_site
           chmod 755 mosdns sing-box convert.sh && ./convert.sh
           rm mosdns* sing-box* convert.sh geoip.dat geosite.db LICENSE README.md config.yaml
+
+      - name: Add Awavenue-ads
+        run: |
+          curl -sSL $AWAVENUE_ADS_RULES_JSON_URL | perl -ne 'print unless/^\s*(\/\/.*|)$/' >> awavenue-ads.json
+          curl -sSL $AWAVENUE_ADS_RULES_SRS_URL | perl -ne 'print unless/^\s*(\/\/.*|)$/' >> awavenue-ads.srs
+          mv awavenue-ads* ./rule_set_site
           
       - name: Move files
         run: |
