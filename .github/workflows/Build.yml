@@ -20,8 +20,8 @@ jobs:
           echo "APPLE_DOMAINS_URL=https://raw.githubusercontent.com/felixonmars/dnsmasq-china-list/master/apple.china.conf" >> $GITHUB_ENV
           echo "EASYLISTCHINA_EASYLIST_REJECT_URL=https://easylist-downloads.adblockplus.org/easylistchina+easylist.txt" >> $GITHUB_ENV
           echo "EASYPRIVACY_REJECT_URL=https://easylist-downloads.adblockplus.org/easyprivacy.txt" >> $GITHUB_ENV
-          echo "AWAVENUE_ADS_RULES_JSON_URL=https://github.com/TG-Twilight/AWAvenue-Ads-Rule/raw/main/Filters/AWAvenue-Ads-Rule-Singbox-regex.json" >> $GITHUB_ENV
-          echo "AWAVENUE_ADS_RULES_SRS_URL=https://github.com/TG-Twilight/AWAvenue-Ads-Rule/raw/main/Filters/AWAvenue-Ads-Rule-Singbox-regex.srs" >> $GITHUB_ENV
+          echo "AWAVENUE_ADS_RULES_JSON_URL=https://github.com/TG-Twilight/AWAvenue-Ads-Rule/raw/main/Filters/AWAvenue-Ads-Rule-Singbox.json" >> $GITHUB_ENV
+          echo "AWAVENUE_ADS_RULES_SRS_URL=https://github.com/TG-Twilight/AWAvenue-Ads-Rule/raw/main/Filters/AWAvenue-Ads-Rule-Singbox.srs" >> $GITHUB_ENV
           echo "CUSTOM_DIRECT=https://raw.githubusercontent.com/Loyalsoldier/domain-list-custom/release/cn.txt" >> $GITHUB_ENV
           echo "CUSTOM_PROXY=https://raw.githubusercontent.com/Loyalsoldier/domain-list-custom/release/geolocation-!cn.txt" >> $GITHUB_ENV
           echo "CUSTOM_GFWLIST=https://raw.githubusercontent.com/pexcn/daily/gh-pages/gfwlist/gfwlist.txt" >> $GITHUB_ENV
