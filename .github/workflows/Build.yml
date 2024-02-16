@@ -249,12 +249,12 @@ jobs:
         run: |
           cd publish || exit 1
           git init
-          git config --local user.email "github-action@users.noreply.github.com"
-          git config --local user.name "GitHub Action"
-          git remote add origin "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
-          git branch -M release
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b release
           git add .
           git commit -m "Release ${RELEASE_NAME}"
+          git remote add origin "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
           git push -f -u origin release
 
       - name: Git push assets to "rule_set" branch
