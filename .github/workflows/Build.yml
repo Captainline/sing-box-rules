@@ -71,6 +71,11 @@ jobs:
         run: |
           wget https://github.com/Yuu518/geoip/raw/release/geoip.dat
           wget https://github.com/Yuu518/geoip/raw/release/geoip.dat.sha256sum
+
+      - name: Get country.mmdb relative files
+        run: |
+          wget https://github.com/Yuu518/geoip/raw/release/Country.mmdb
+          wget https://github.com/Yuu518/geoip/raw/release/Country.mmdb.sha256sum
           
       - name: Generate GFWList domains
         run: |
@@ -228,8 +233,8 @@ jobs:
           
       - name: Move files
         run: |
-          mkdir -p /publish/
-          wget https://raw.githubusercontent.com/Yuu518/geoip/release/Country.mmdb -O ./publish/country.mmdb
+          install -Dp ./Country.mmdb ./publish/country.mmdb
+          install -Dp ./Country.mmdb.sha256sum ./publish/Country.mmdb.sha256sum
           install -Dp ./geoip.dat ./publish/geoip.dat
           install -Dp ./geoip.dat.sha256sum ./publish/geoip.dat.sha256sum
           install -Dp ./custom/publish/geosite.dat ./publish/geosite.dat
