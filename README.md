@@ -11,7 +11,7 @@
 
 由此分支获取： [rule_set branch](https://github.com/Yuu518/sing-box-rules/tree/rule_set)
 
-## **内容**
+## ****
 
 用法同 [Loyalsoldier/v2ray-rules-dat](https://github.com/Loyalsoldier/v2ray-rules-dat)  
 - `category-ads-all` 使用easylistchina+easylist+easyprivacy
