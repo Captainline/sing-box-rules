@@ -220,12 +220,6 @@ jobs:
           wget https://github.com/IrineSistiana/mosdns/releases/download/v4.5.3/mosdns-linux-amd64.zip -O mosdns.zip && unzip mosdns.zip
           chmod 755 mosdns sing-box convert.sh && ./convert.sh
           rm mosdns* sing-box* convert.sh geoip.dat geosite.db LICENSE README.md config.yaml
-
-      - name: Add Awavenue-ads
-        run: |
-          curl -sSL $AWAVENUE_ADS_RULES_JSON_URL | perl -ne 'print unless/^\s*(\/\/.*|)$/' >> awavenue-ads.json
-          curl -sSL $AWAVENUE_ADS_RULES_SRS_URL | perl -ne 'print unless/^\s*(\/\/.*|)$/' >> awavenue-ads.srs
-          mv awavenue-ads* ./rule_set/rule_set_site
           
       - name: Move files
         run: |
