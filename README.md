@@ -14,4 +14,3 @@
 ## 
 
 用法同 [Loyalsoldier/v2ray-rules-dat](https://github.com/Loyalsoldier/v2ray-rules-dat)  
-- `category-ads-all` 使用[Cats-Team/AdRules](https://github.com/Cats-Team/AdRules) 
